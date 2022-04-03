@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>main.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">3.2comission3-test</a> &gt; <a href="index.source.html" class="el_package">ru.netology</a> &gt; <span class="el_source">main.kt</span></div><h1>main.kt</h1><pre class="source lang-java linenums">package ru.netology
+
+<span class="pc" id="L3">val cardType: String = &quot;Visa&quot;</span>
+<span class="pc" id="L4">val previousTransfer: Int = 75000_00</span>
+<span class="pc" id="L5">val currentTransfer: Int = 10000_00</span>
+
+
+fun prevComission(cardType: String, previousTransfer: Int, currentTransfer: Int): Int {
+<span class="fc bfc" id="L9" title="All 3 branches covered.">    val previousComission = when (cardType) {</span>
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        &quot;Mastercard&quot;, &quot;Maestro&quot; -&gt; if (currentTransfer + previousTransfer &gt; 75000_00) currentTransfer / 1000 * 6 + 20_00 else 0</span>
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        &quot;РњР�Р &quot;, &quot;Visa&quot; -&gt; if (currentTransfer / 10000 * 75 &gt; 35_00) currentTransfer / 10000 * 75 else 35_00</span>
+<span class="fc" id="L12">        else -&gt; 0 // РѕСЃС‚Р°РµС‚СЃСЏ С‚РѕР»СЊРєРѕ vk</span>
+    }
+<span class="fc" id="L14">    return previousComission</span>
+}
+
+fun finalComission(cardType: String, previousTransfer: Int, currentTransfer: Int, prevComission: Int): Any {
+<span class="fc bfc" id="L18" title="All 3 branches covered.">    return when (cardType) {</span>
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        &quot;Mastercard&quot;, &quot;Maestro&quot;, &quot;РњР�Р &quot;, &quot;Visa&quot; -&gt; if (currentTransfer &gt; 150_000_00 || currentTransfer + previousTransfer &gt; 600_000_00) &quot;РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїРµСЂРµРІРѕРґРѕРІ&quot;</span>
+<span class="fc" id="L20">        else prevComission</span>
+<span class="pc bpc" id="L21" title="1 of 4 branches missed.">        &quot;VKPay&quot; -&gt; if (currentTransfer &gt; 15000_00 || currentTransfer + previousTransfer &gt; 40000_00) &quot;РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїРµСЂРµРІРѕРґРѕРІ&quot;</span>
+<span class="fc" id="L22">        else prevComission</span>
+<span class="fc" id="L23">        else -&gt; &quot;РўР°РєРѕРіРѕ РІР°СЂРёР°РЅС‚Р° Р±С‹С‚СЊ РЅРµ РјРѕР¶РµС‚) Р’РІРµРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅС‹Р№ РІР°СЂРёР°РЅС‚&quot;</span>
+    }
+}
+
+fun comission(cardType: String, previousTransfer: Int, currentTransfer: Int): Any {
+<span class="fc" id="L28">    val prevComission = prevComission(cardType, previousTransfer, currentTransfer)</span>
+<span class="fc" id="L29">    val finalComission = finalComission(cardType, previousTransfer, currentTransfer, prevComission)</span>
+<span class="fc" id="L30">    return finalComission</span>
+}
+
+
+fun main() {
+
+<span class="nc" id="L36">    val comission = comission(cardType, previousTransfer, currentTransfer)</span>
+
+<span class="nc" id="L38">    println(&quot;РћРєРѕРЅС‡Р°С‚РµР»СЊРЅР°СЏ РєРѕРјРёСЃСЃРёСЏ: $comission&quot;)</span>
+
+<span class="nc" id="L40">}</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
