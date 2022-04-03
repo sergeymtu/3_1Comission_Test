@@ -1,0 +1,7 @@
+/.gradle/
+/.idea/
+/build/classes/
+/build/kotlin/
+/build/libs/
+/build/test-results/
+/build/tmp/
