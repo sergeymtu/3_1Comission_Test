@@ -204,7 +204,7 @@ class MainKtTest {
         val prevCom = 0
 
         val result =  finalComission(cardType = card, previousTransfer = previous, currentTransfer = current, prevComission = prevCom)
-        assertEquals(20_00 , result)
+        assertEquals(20_000 , result)
     }
 
     @Test
